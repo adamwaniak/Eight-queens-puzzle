@@ -14,8 +14,18 @@ class Board(val size: Int) {
         }
     }
 
+    fun numberOfQueens() : Int{
+        var result = 0
+        fields.forEach { if (it.isOccupied) result+=1 }
+        return result
+    }
+
     fun addQueen(row: Int, column: Int) {
         get(row, column).isOccupied = true
+    }
+
+    fun removeQueen(row: Int, column: Int) {
+        get(row, column).isOccupied = false
     }
 
     fun get(row: Int, column: Int): Field {
@@ -91,4 +101,6 @@ class Board(val size: Int) {
         stringBuilder.append("\n)")
         return stringBuilder.toString()
     }
+
+
 }
