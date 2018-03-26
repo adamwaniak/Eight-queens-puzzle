@@ -1,6 +1,5 @@
 package app
 
-import java.lang.IllegalArgumentException
 import java.lang.StringBuilder
 
 class Board(val size: Int) {
@@ -20,9 +19,14 @@ class Board(val size: Int) {
         return result
     }
 
+    fun addQueen(field: Field) = addQueen(field.row, field.column)
+
+
     fun addQueen(row: Int, column: Int) {
         get(row, column).isOccupied = true
     }
+
+    fun removeQueen(field: Field) = removeQueen(field.row, field.column)
 
     fun removeQueen(row: Int, column: Int) {
         get(row, column).isOccupied = false
@@ -34,7 +38,7 @@ class Board(val size: Int) {
                 return field
             }
         }
-        throw IllegalArgumentException()
+        throw IndexOutOfBoundsException()
     }
 
     fun getRow(row: Int): List<Field> {
@@ -89,17 +93,21 @@ class Board(val size: Int) {
         return diagonal
     }
 
-    override fun toString(): String {
+    fun printBoard(): String {
         val stringBuilder = StringBuilder()
         stringBuilder.append("Board(size=$size,")
-        for (i in 0 until size){
+        for (i in 0 until size) {
             stringBuilder.append("\n")
-            for (j in 0 until size){
-                stringBuilder.append(get(i,j).toString())
+            for (j in 0 until size) {
+                stringBuilder.append(get(i, j).toPrintBoard())
             }
         }
         stringBuilder.append("\n)")
         return stringBuilder.toString()
+    }
+
+    override fun toString(): String {
+        return "Board(size=$size, fields=$fields)"
     }
 
 

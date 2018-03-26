@@ -1,26 +1,6 @@
 package app
 
-class Algorithm(val board: Board) {
-
-    fun placeQueens(n: Int): Boolean {
-        if (n == 0) {
-            return true
-        } else {
-            for (i in 0 until board.size) {
-                for (j in 0 until board.size) {
-                    if (!isAttacked(i, j)) {
-                        board.addQueen(i, j)
-                        if (placeQueens(n - 1)) {
-                            return true
-                        } else {
-                            board.removeQueen(i, j)
-                        }
-                    }
-                }
-            }
-            return false
-        }
-    }
+abstract class Algorithm(val board: Board) {
 
     fun isCollisionExist(): Boolean {
         for (field in board.fields) {
@@ -37,7 +17,8 @@ class Algorithm(val board: Board) {
         return false
     }
 
-    fun isAttacked(row: Int, column: Int): Boolean {
+
+    internal fun isAttacked(row: Int, column: Int): Boolean {
         if (board.get(row, column).isOccupied){
             return true
         }
@@ -51,7 +32,11 @@ class Algorithm(val board: Board) {
         }
     }
 
-    private fun List<Field>.isOccupied(excludedField: Field): Boolean {
+    internal fun isAttacked(field: Field): Boolean {
+        return isAttacked(field.row, field.column)
+    }
+
+    internal fun List<Field>.isOccupied(excludedField: Field): Boolean {
         for (field in this) {
             if ((field != excludedField) and field.isOccupied) {
                 return true
@@ -59,4 +44,5 @@ class Algorithm(val board: Board) {
         }
         return false
     }
+
 }
