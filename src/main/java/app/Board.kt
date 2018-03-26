@@ -2,7 +2,7 @@ package app
 
 import java.lang.StringBuilder
 
-class Board(val size: Int) {
+class Board(private val size: Int) {
     val fields: MutableList<Field> = mutableListOf()
 
     init {

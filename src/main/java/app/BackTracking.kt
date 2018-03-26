@@ -5,17 +5,15 @@ class BackTracking(board: Board) : Algorithm(board) {
         if (n == 0) {
             return true
         } else {
-            for (i in 0 until board.size) {
-                for (j in 0 until board.size) {
-                    if (!isAttacked(i, j)) {
-                        board.addQueen(i, j)
+            for (field in board.fields) {
+                if (!isAttacked(field)) {
+                    board.addQueen(field)
                         if (placeQueens(n - 1)) {
                             return true
                         } else {
-                            board.removeQueen(i, j)
+                            board.removeQueen(field)
                         }
                     }
-                }
             }
             return false
         }

@@ -36,7 +36,7 @@ abstract class Algorithm(val board: Board) {
         return isAttacked(field.row, field.column)
     }
 
-    internal fun List<Field>.isOccupied(excludedField: Field): Boolean {
+    private fun List<Field>.isOccupied(excludedField: Field): Boolean {
         for (field in this) {
             if ((field != excludedField) and field.isOccupied) {
                 return true
