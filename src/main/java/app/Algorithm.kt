@@ -2,6 +2,21 @@ package app
 
 abstract class Algorithm(val board: Board) {
 
+    abstract fun placeQueens(n: Int): Boolean
+
+    fun getAllPossibleSolution(n: Int): Set<Board> {
+        val result = mutableSetOf<Board>()
+        for (field in board.fields) {
+            field.isOccupied = true
+            placeQueens(n - 1)
+            if (board.numberOfQueens()==n){
+                result.add(board.getCopy())
+            }
+            board.clearBoard()
+        }
+        return result
+    }
+
     fun isCollisionExist(): Boolean {
         for (field in board.fields) {
             if (field.isOccupied) {
@@ -19,7 +34,7 @@ abstract class Algorithm(val board: Board) {
 
 
     internal fun isAttacked(row: Int, column: Int): Boolean {
-        if (board.get(row, column).isOccupied){
+        if (board.get(row, column).isOccupied) {
             return true
         }
         board.addQueen(row, column)

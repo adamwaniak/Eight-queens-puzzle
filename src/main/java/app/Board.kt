@@ -13,9 +13,19 @@ class Board(private val size: Int) {
         }
     }
 
-    fun numberOfQueens() : Int{
+    fun getCopy(): Board {
+        val copyBoard = Board(size)
+        for (i in 0 until size) {
+            for (j in 0 until size) {
+                copyBoard.get(i, j).isOccupied = get(i, j).isOccupied
+            }
+        }
+        return copyBoard
+    }
+
+    fun numberOfQueens(): Int {
         var result = 0
-        fields.forEach { if (it.isOccupied) result+=1 }
+        fields.forEach { if (it.isOccupied) result += 1 }
         return result
     }
 
@@ -93,7 +103,7 @@ class Board(private val size: Int) {
         return diagonal
     }
 
-    fun printBoard(): String {
+    fun printBoard() {
         val stringBuilder = StringBuilder()
         stringBuilder.append("Board(size=$size,")
         for (i in 0 until size) {
@@ -103,11 +113,35 @@ class Board(private val size: Int) {
             }
         }
         stringBuilder.append("\n)")
-        return stringBuilder.toString()
+        println (stringBuilder.toString())
     }
 
     override fun toString(): String {
         return "Board(size=$size, fields=$fields)"
+    }
+
+    fun clearBoard() {
+        for (field in fields) {
+            field.isOccupied = false
+        }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Board
+
+        if (size != other.size) return false
+        if (fields != other.fields) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = size
+        result = 31 * result + fields.hashCode()
+        return result
     }
 
 

@@ -1,7 +1,7 @@
 package app
 
 class BackTracking(board: Board) : Algorithm(board) {
-    fun placeQueens(n: Int): Boolean {
+    override fun placeQueens(n: Int): Boolean {
         if (n == 0) {
             return true
         } else {

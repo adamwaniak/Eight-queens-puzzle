@@ -3,7 +3,7 @@ package app
 class ForwardChecking(board: Board) : Algorithm(board) {
 
 
-    fun placeQueens(n: Int): Boolean {
+    override fun placeQueens(n: Int): Boolean {
         val availableFields = getAvailableFields()
         when {
             n == 0 -> return true
