@@ -35,14 +35,7 @@ class AlgorithmTest {
     }
 
 
-    @Test
-    fun testBackTracking() {
-        val board = Board(4)
-        val algorithm = BackTracking(board)
-        algorithm.placeQueens(4,false)
-        board.printBoard()
-        Assert.assertTrue(board.numberOfQueens() == 4)
-    }
+
 
     @Test
     fun testGetAvailableFields() {
@@ -55,11 +48,20 @@ class AlgorithmTest {
 
     @Test
     fun testForwardChecking() {
-        val board = Board(4)
+        val board = Board(8)
         val algorithm = ForwardChecking(board)
-        algorithm.placeQueens(4, false)
+        algorithm.placeQueens(8)
         board.printBoard()
-        Assert.assertTrue(board.numberOfQueens() == 4)
+        Assert.assertTrue(board.numberOfQueens() == 8)
+    }
+
+    @Test
+    fun testBackTracking() {
+        val board = Board(8)
+        val algorithm = BackTracking(board)
+        algorithm.placeQueens(8)
+        board.printBoard()
+        Assert.assertTrue(board.numberOfQueens() == 8)
     }
 
 

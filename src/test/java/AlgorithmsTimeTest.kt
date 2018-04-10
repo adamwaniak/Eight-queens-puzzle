@@ -10,19 +10,19 @@ class AlgorithmsTimeTest{
         val board = Board(n)
         val forwardChecking = ForwardChecking(board)
 
-        val solutions = forwardChecking.getAllPossibleSolutions()
+        val solutions = forwardChecking.getAllPossibleSolution(n)
 
         println("Forward checking, possible solution: ${solutions.size}")
     }
 
     @Test
     fun backTrackingAllSolution() {
-        val n = 8
+        val n = 7
         val board = Board(n)
         val backTracking = BackTracking(board)
 
-        val solutions = backTracking.getAllPossibleSolutions()
+        val solutions = backTracking.getAllPossibleSolution(n)
 
-        println("Back tracking, possible solution: ${solutions.size}")
+        println("Forward checking, possible solution: ${solutions.size}")
     }
 }

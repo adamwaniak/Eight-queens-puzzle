@@ -1,5 +1,7 @@
 package app
 
+import kotlin.math.absoluteValue
+
 class ForwardChecking(board: Board) : Algorithm(board) {
 
 
@@ -13,7 +15,15 @@ class ForwardChecking(board: Board) : Algorithm(board) {
                 true
             }
             availableFields.isEmpty() -> return false
-            else -> for (field in availableFields) {
+            else -> for (field in availableFields
+                    .filter { !it.isOccupied }
+                    .sortedBy { o1 ->
+                val center = board.size / 2
+                val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
+                diff1
+            }.toMutableList()
+            )
+            {
                 board.addQueen(field)
                 if (placeQueens(n - 1, allSolution)) return true
                 else board.removeQueen(field)

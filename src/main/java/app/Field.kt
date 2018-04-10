@@ -1,6 +1,8 @@
 package app
 
-class Field(val row: Int, val column: Int, var isOccupied: Boolean = false) {
+import kotlin.math.absoluteValue
+
+class Field(val row: Int, val column: Int,var isOccupied: Boolean = false){
 
     fun toPrintBoard(): String {
         return if (isOccupied) {
@@ -31,6 +33,5 @@ class Field(val row: Int, val column: Int, var isOccupied: Boolean = false) {
         result = 31 * result + isOccupied.hashCode()
         return result
     }
-
 
 }

@@ -1,9 +1,10 @@
 package app
 
 import java.lang.StringBuilder
+import kotlin.math.absoluteValue
 
 class Board(val size: Int) {
-    val fields: MutableList<Field> = mutableListOf()
+    var fields: MutableList<Field> = mutableListOf()
 
     init {
         for (i in 0 until size) {
@@ -11,7 +12,14 @@ class Board(val size: Int) {
                 fields.add(Field(i, j))
             }
         }
+//        fields = fields.sortedBy {o1->
+//
+//            val center = size / 2
+//            val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
+//            diff1
+//        }.toMutableList()
     }
+
 
     fun getCopy(): Board {
         val copyBoard = Board(size)
@@ -113,7 +121,7 @@ class Board(val size: Int) {
             }
         }
         stringBuilder.append("\n)")
-        println (stringBuilder.toString())
+        println(stringBuilder.toString())
     }
 
     override fun toString(): String {
