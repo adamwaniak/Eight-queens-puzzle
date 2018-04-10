@@ -16,12 +16,12 @@ class ForwardChecking(board: Board) : Algorithm(board) {
             }
             availableFields.isEmpty() -> return false
             else -> for (field in availableFields
-                    .filter { !it.isOccupied }
-                    .sortedBy { o1 ->
-                val center = board.size / 2
-                val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
-                diff1
-            }.toMutableList()
+//                    .filter { !it.isOccupied }
+//                    .sortedBy { o1 ->
+//                val center = board.size / 2
+//                val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
+//                diff1
+//            }.toMutableList()
             )
             {
                 board.addQueen(field)

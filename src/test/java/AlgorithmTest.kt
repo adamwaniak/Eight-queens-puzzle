@@ -48,20 +48,20 @@ class AlgorithmTest {
 
     @Test
     fun testForwardChecking() {
-        val board = Board(8)
+        val board = Board(4)
         val algorithm = ForwardChecking(board)
-        algorithm.placeQueens(8)
+        algorithm.placeQueens(4,false)
         board.printBoard()
-        Assert.assertTrue(board.numberOfQueens() == 8)
+        Assert.assertTrue(board.numberOfQueens() == 4)
     }
 
     @Test
     fun testBackTracking() {
-        val board = Board(8)
+        val board = Board(4)
         val algorithm = BackTracking(board)
-        algorithm.placeQueens(8)
+        algorithm.placeQueens(4,false)
         board.printBoard()
-        Assert.assertTrue(board.numberOfQueens() == 8)
+        Assert.assertTrue(board.numberOfQueens() == 4)
     }
 
 

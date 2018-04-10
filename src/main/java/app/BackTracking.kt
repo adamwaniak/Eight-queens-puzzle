@@ -13,12 +13,12 @@ class BackTracking(board: Board) : Algorithm(board) {
             }
         } else {
             for (field in board.fields
-                    .filter { !it.isOccupied }
-                    .sortedBy { o1->
-            val center = board.size / 2
-            val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
-            diff1
-        }.toMutableList()
+//                    .filter { !it.isOccupied }
+//                    .sortedBy { o1->
+//            val center = board.size / 2
+//            val diff1 = (center - o1.column).absoluteValue + (center - o1.row).absoluteValue
+//            diff1
+//        }.toMutableList()
             )
  {
                 if (!isAttacked(field)) {
