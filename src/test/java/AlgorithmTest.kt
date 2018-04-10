@@ -39,7 +39,7 @@ class AlgorithmTest {
     fun testBackTracking() {
         val board = Board(4)
         val algorithm = BackTracking(board)
-        algorithm.placeQueens(4)
+        algorithm.placeQueens(4,false)
         board.printBoard()
         Assert.assertTrue(board.numberOfQueens() == 4)
     }
@@ -57,7 +57,7 @@ class AlgorithmTest {
     fun testForwardChecking() {
         val board = Board(4)
         val algorithm = ForwardChecking(board)
-        algorithm.placeQueens(4)
+        algorithm.placeQueens(4, false)
         board.printBoard()
         Assert.assertTrue(board.numberOfQueens() == 4)
     }

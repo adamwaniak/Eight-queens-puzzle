@@ -3,14 +3,19 @@ package app
 class ForwardChecking(board: Board) : Algorithm(board) {
 
 
-    override fun placeQueens(n: Int): Boolean {
+    override fun placeQueens(n: Int, allSolution: Boolean): Boolean {
         val availableFields = getAvailableFields()
         when {
-            n == 0 -> return true
+            n == 0 -> return if (allSolution) {
+                allPossibleSolution.add(board.getCopy())
+                false
+            } else {
+                true
+            }
             availableFields.isEmpty() -> return false
             else -> for (field in availableFields) {
                 board.addQueen(field)
-                if (placeQueens(n - 1)) return true
+                if (placeQueens(n - 1, allSolution)) return true
                 else board.removeQueen(field)
             }
         }

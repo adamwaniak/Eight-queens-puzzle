@@ -2,19 +2,16 @@ package app
 
 abstract class Algorithm(val board: Board) {
 
-    abstract fun placeQueens(n: Int): Boolean
+    protected val allPossibleSolution = mutableSetOf<Board>()
 
-    fun getAllPossibleSolution(n: Int): Set<Board> {
-        val result = mutableSetOf<Board>()
-        for (field in board.fields) {
-            field.isOccupied = true
-            placeQueens(n - 1)
-            if (board.numberOfQueens()==n){
-                result.add(board.getCopy())
-            }
-            board.clearBoard()
-        }
-        return result
+
+    abstract fun placeQueens(n: Int, allSolution: Boolean): Boolean
+
+    fun getAllPossibleSolutions(): MutableSet<Board> {
+        board.clearBoard()
+        allPossibleSolution.clear()
+        placeQueens(board.size,true)
+        return allPossibleSolution
     }
 
     fun isCollisionExist(): Boolean {
